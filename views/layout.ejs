@@ -29,11 +29,57 @@
     -->
 
     <!--STYLES-->
+    <link rel="stylesheet" href="/styles/bootstrap.css">
+    <link rel="stylesheet" href="/styles/bootstrap.min.css">
+    <link rel="stylesheet" href="/styles/importer.css">
     <!--STYLES END-->
   </head>
-
   <body>
-    <%- body %>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/"> Procedures System </a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <% if (session.authenticated) { %>
+              <li class="active"><a href"/user/show/<%= session.user.id %>"><%= session.user.fullName %> </a> </li>
+            <% } %>
+            <% if (session.authenticated && session.user.position == 1) { %>
+              <li> <a href="/user"> User Administration </a> </li>
+              <li> <a href="#"> Placeholder2 </a></li>
+            <% } %>
+          </ul>
+          <div class="navbar-right">
+            <% if (session.authenticated) { %>
+              <ul class="navbar-form navbar-right">
+                <li><a class="btn btn-danger navbar-right" href="/session/destroy"> Sign-out </a></li>
+              </ul>
+            <% } %>
+          </div>
+          <% if (!session.authenticated) { %>
+              <form class="navbar-form navbar-right" action="/session/create">
+                <div class="form-group">
+                  <input type="email" placeholder="Enter your email" name="email" class="form-control"> </input>
+                </div>
+                <div class="form-group">
+                  <input type="password" placeholder="Enter your password" name="password" class="form-control"> </input>
+                </div>
+                <input type="submit" class="btn btn-success" value="Log in"></input>
+                <input type="hidden" name="_csrf" value="<%= _csrf %>"></input>
+              </form>
+          <% } %>
+        </div>
+      </div>
+    </div>
+    <div style="padding: 4em 0em">
+      <%- body %>
+    </div>
 
 
 
@@ -59,6 +105,7 @@
     -->
 
     <!--TEMPLATES-->
+
     <!--TEMPLATES END-->
 
 
@@ -86,6 +133,7 @@
     -->
 
     <!--SCRIPTS-->
+    <script src="/js/dependencies/sails.io.js"></script>
     <!--SCRIPTS END-->
   </body>
 </html>

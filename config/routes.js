@@ -34,7 +34,9 @@ module.exports.routes = {
 
   '/': {
     view: 'homepage'
-  }
+  },
+
+  'GET /user/signup': {view: 'user/signup'},
 
   /***************************************************************************
   *                                                                          *
