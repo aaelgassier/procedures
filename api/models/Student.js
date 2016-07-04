@@ -6,9 +6,32 @@
  */
 
 module.exports = {
+  connection: 'mySqlProcedures',
+  schema: true,
 
   attributes: {
-
+    studentNationalID: {
+      type:'integer',
+      required: true,
+      unique: true
+    },
+    studentName: {
+      type: 'string',
+      required: true
+    },
+    studyCountry: {
+      type: 'string',
+      required: true
+    },
+    studyCountryGroup: {
+      type: 'string',
+      required: true
+    },
+    createdAt: {
+      type: 'datetime'
+    },
+    updatedAt: {
+      type: 'datetime'
+    },
   }
 };
-

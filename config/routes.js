@@ -42,6 +42,9 @@ module.exports.routes = {
   'GET /user/edit': {view: 'user/edit'},
   'PUT /user/edit': 'UserController.edit',
 
+  'GET /student/create': {view: 'student/create'},
+  'POST /student/create': 'StudentController.create',
+
   /***************************************************************************
   *                                                                          *
   * Custom routes here...                                                    *

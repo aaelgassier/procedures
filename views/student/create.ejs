@@ -1,0 +1,64 @@
+<div class="container">
+  <form action="/student/create" method="POST" class="form-horizontal">
+
+    <div class="panel panel-default">
+      <div class="panel-heading">Student Information</div>
+      <div class="panel-body" style="padding: 2em">
+        <div class="form-group">
+          <label for="studentName" class="help">Student Name: </label>
+          <div class="input-group input-group-sm col-xs-4">
+            <input type="text" name="studentName" class="form-control" id="studentName" placeholder="Enter Student Name" required />
+            <span class="input-group-addon" id="sizing-addon3">*</span>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="studentNationalID" class="help">National ID: </label>
+          <div class="input-group input-group-sm col-xs-2">
+            <input type="text" name="studentNationalID" class="form-control" id="studentNationalID" placeholder="Enter Student National ID" required />
+            <span class="input-group-addon" id="sizing-addon3">*</span>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="studyCountry" class="help">Study Country: </label>
+          <div class="input-group input-group-sm col-xs-2">
+            <select name="studyCountry" class="form-control" id="studyCountry">
+              <option value="selected"> -- SELECT -- </option>
+              <option value="United States"> United States </option>
+              <option value="Canada"> Canada </option>
+              <option value="United Kingdom"> United Kingdom </option>
+              <option value="Malaysia"> Malasiya </option>
+              <option value="Turkey"> Turkey </option>
+              <option value="Malta"> Malta </option>
+              <option value="Australia"> Australia </option>
+              <option value="New Zealand"> New Zealand </option>
+              <option value="India"> India </option>
+            </select>
+            <span class="input-group-addon">*</span>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="studyCountryGroup" class="help">Study Country Group: </label>
+          <div class="input-group input-group-sm col-xs-2">
+            <select name="studyCountryGroup" class="form-control" id="studyCountryGroup">
+              <option value=""> -- SELECT -- </option>
+              <option value="UI"> United Kingdom </option>
+              <option value="AU"> Australia </option>
+              <option value="CU"> Canada-United States </option>
+              <option value="TM"> Turkey-Malta </option>
+              <option value="EA"> Eastren Asia </option>
+              <option value="EE"> Eastren Europe </option>
+              <option value="WE"> Westren Europe </option>
+            </select>
+            <span class="input-group-addon">*</span>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="input-group input-group-sm">
+            <input type="submit" class="btn btn-success" value="Create Account"></input>
+            <input type="hidden" name="_csrf" value="<%= _csrf %>"></input>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
