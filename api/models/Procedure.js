@@ -19,9 +19,6 @@ module.exports = {
       type: 'string',
       required: true
     },
-    procedureDate: {
-      type: 'datetime'
-    },
     proStudyCountryGroup: {
       type: 'string'
     },

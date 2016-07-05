@@ -21,8 +21,7 @@ module.exports = {
 	/* if the student has been found, will be redirected to create create page (added action) to list details of */
 	/* searched student otherwise will be redirected to search page again*/
 	'procedure-submit': function (req, res, next) {
-		Student.findOne({studentNationalID: req.param('studentSearchByNID') }, function foundStudent(err, student) {
-
+		Student.findOne({studentNationalID: req.param('studentSearchByNID'), studyCountryGroup: req.session.user.department }, function foundStudent(err, student) {
 			if (err) return next(err);
 
 			if (!student) {

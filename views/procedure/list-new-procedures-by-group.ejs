@@ -11,7 +11,7 @@
       <tr data-id="<%= procedure.id %>" data-model="procedure">
         <td><%= procedure.proStudentNationalID %></td>
         <td><%= procedure.procedureType %></td>
-        <td><%= procedure.procedureDate %></td>
+        <td><%= procedure.createdAt %></td>
         <td><a href="/procedure/edit/<%= procedure.id %>" class="btn btn-sm btn-warning">Edit</a></td>
       </tr>
     <% }) %>

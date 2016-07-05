@@ -19,14 +19,8 @@
 
 module.exports.policies = {
 
-  user: {
-    '*': 'authenticated'
-  },
-  student: {
-    '*': 'authenticated'
-  },
   procedure: {
-    '*': 'authenticated'
+    'list-new-procedures-by-group': 'supervisor',
   }
 
   /***************************************************************************
