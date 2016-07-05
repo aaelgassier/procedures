@@ -22,7 +22,7 @@ module.exports = {
 	/* searched student otherwise will be redirected to search page again*/
 	'procedure-submit': function (req, res, next) {
 		Student.findOne({studentNationalID: req.param('studentSearchByNID') }, function foundStudent(err, student) {
-			console.log(student.studentName);
+
 			if (err) return next(err);
 
 			if (!student) {
@@ -34,16 +34,6 @@ module.exports = {
 				res.redirect('/procedure/search-to-create-new-procedure');
 				return;
 			}
-
-			res.redirect('/procedure/new/' + student.id);
-		});
-	},
-
-	/* This actions is to list data of student to add a procedure for searched student */
-	'new': function (req, res, next) {
-		Student.findOne(req.param('id'), function foundUser (err, student) {
-			if (err) return next(err);
-			if (!student) return next();
 			res.view({
 				student: student
 			});
@@ -60,11 +50,21 @@ module.exports = {
 					err: err
 				}
 				/* if error redirect back to sign-up page*/
-				return res.redirect('/procedure/new');
+				return res.redirect('/procedure/procedure-submit');
 			}
 			/* After successfully creating the user redirect to the new show action */
-			// res.redirect('/user/show/' + user.id);
-			console.log("Procedure OK");
+			res.redirect('/procedure/show/' + procedure.id);
+		});
+	},
+
+	/* render the profie view --> /views/show.ejs*/
+	show: function (req, res, next) {
+		Procedure.findOne(req.param('id'), function foundProcedure (err, procedure) {
+			if (err) return next(err);
+			if (!procedure) return next();
+			res.view({
+				procedure: procedure
+			});
 		});
 	},
 	/* This action displays new procedures according to user's department */
