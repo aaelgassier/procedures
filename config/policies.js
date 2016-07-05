@@ -19,6 +19,16 @@
 
 module.exports.policies = {
 
+  user: {
+    '*': 'authenticated'
+  },
+  student: {
+    '*': 'authenticated'
+  },
+  procedure: {
+    '*': 'authenticated'
+  }
+
   /***************************************************************************
   *                                                                          *
   * Default policy for all controllers and actions (`true` allows public     *
