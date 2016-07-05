@@ -7,8 +7,47 @@
 
 module.exports = {
 
-  attributes: {
+  connection: 'mySqlProcedures',
+  schema: true,
 
+  attributes: {
+    proStudentNationalID: {
+      type:'integer',
+      required: true,
+    },
+    procedureType: {
+      type: 'string',
+      required: true
+    },
+    procedureDate: {
+      type: 'datetime'
+    },
+    proStudyCountryGroup: {
+      type: 'string'
+    },
+    procedureNote: {
+      type: 'string'
+    },
+    procedureLevel: {
+      type: 'integer',
+      defaultsTo: 1
+    },
+    procedurePending: {
+      type: 'boolean',
+      defaultsTo: false
+    },
+    proRefNo: {
+      type: 'integer',
+      defaultsTo: 0
+    },
+    proFilePath: {
+      type: 'string'
+    },
+    createdAt: {
+      type: 'datetime'
+    },
+    updatedAt: {
+      type: 'datetime'
+    },
   }
 };
-

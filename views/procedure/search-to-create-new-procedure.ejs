@@ -1,0 +1,15 @@
+<div class="container">
+  <form action="/procedure/procedure-submit" method="POST" class="form-horizontal">
+
+    <div class="form-group">
+      <label for="studentSearchByNID" class="col-xs-2">Student National ID: </label>
+      <div class="col-xs-3">
+        <input type="text" name="studentSearchByNID" class="form-control" id="studentSearchByNID" placeholder="Student National ID" />
+      </div>
+      <div class="col-xs-3">
+        <input type="submit" class="btn btn-success" value="Search"></input>
+        <input type="hidden" name="_csrf" value="<%= _csrf %>"></input>
+      </div>
+    </div>
+  </form>
+</div>

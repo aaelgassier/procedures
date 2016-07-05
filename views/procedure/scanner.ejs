@@ -1,0 +1,48 @@
+<div class="container">
+  <h1> Procedure decision </h1>
+  <hr />
+  <form action="/procedure/update/<%= procedure.id %>" method="POST" class="form-horizontal">
+    <h2> Hey, you're taking a decision about a procedure ... </h2>
+    <div class="panel panel-info">
+      <div class="panel-heading">Procedure Details</div>
+      <div class="panel-body">
+
+        <div class="form-group">
+          <label for="proStudentNationalID" class="col-xs-2">National ID: </label>
+          <div class="col-xs-3">
+            <input type="text" name="proStudentNationalID" value="<%= procedure.proStudentNationalID %>" class="form-control" id="proStudentNationalID"  readonly="true"/>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="procedureType" class="col-xs-2">Procedure Type: </label>
+          <div class="col-xs-5">
+            <input type="text" name="procedureType" value="<%= procedure.procedureType %>" class="form-control" id="procedureType" readonly="true"/>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="proRefNo" class="col-xs-2">Reference Number: </label>
+          <div class="col-xs-5">
+            <input type="text" name="proRefNo" class="form-control" id="proRefNo" placeholder="Enter Procedure Reference No" />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="proFilePath" class="col-xs-2">File Path: </label>
+          <div class="col-xs-5">
+            <input type="text" name="proFilePath" class="form-control" id="proFilePath" placeholder="Enter File Path" />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-xs-2"></label>
+          <div class="col-xs-3">
+            <input type="submit" class="btn btn-success" value="Confirm"></input>
+            <input type="hidden" name="_csrf" value="<%= _csrf %>"></input>
+        </div>
+
+      </div>
+    </div>
+  </form>
+</div>

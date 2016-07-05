@@ -1,0 +1,46 @@
+<div class="container">
+  <form action="/procedure/create/<%= student.id %>" method="POST" class="form-horizontal">
+    <div class="panel panel-default">
+      <div class="panel-heading">Procedure Information</div>
+      <div class="panel-body" style="padding: 2em">
+        <div class="form-group">
+          <label for="proStudentNationalID" class="help">National ID: </label>
+          <div class="input-group input-group-sm col-xs-2">
+            <input type="text" name="proStudentNationalID" class="form-control" id="proStudentNationalID" value="<%= student.studentNationalID %>" readonly />
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="studyCountry" class="help">Study Country: </label>
+          <div class="input-group input-group-sm col-xs-2">
+            <input type="text" name="studyCountry" class="form-control" id="studyCountry" value="<%= student.studyCountry %>" readonly />
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="proStudyCountryGroup" class="help">Country Group: </label>
+          <div class="input-group input-group-sm col-xs-2">
+            <input type="text" name="proStudyCountryGroup" class="form-control" id="proStudyCountryGroup" value="<%= student.studyCountryGroup %>" readonly />
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="procedureType" class="help">Procedure Type: </label>
+          <div class="input-group input-group-sm col-xs-2">
+            <select name="procedureType" class="form-control" id="procedureType">
+              <option value="selected"> -- SELECT -- </option>
+              <option value="Marital Status"> Marital Status </option>
+              <option value="Suspending"> Suspending </option>
+              <option value="Enquiry Only"> Enquiry Only </option>
+              <option value="Period Extension"> Period Extension </option>
+              <option value="Degree Extension"> Degree Extension </option>
+              <option value="Escort Fees"> Escort Fees </option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="input-group input-group-sm">
+            <input type="submit" class="btn btn-success" value="Add Procedure"></input>
+            <input type="hidden" name="_csrf" value="<%= _csrf %>"></input>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

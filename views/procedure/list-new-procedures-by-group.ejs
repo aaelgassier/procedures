@@ -1,0 +1,19 @@
+<div class="container">
+  <h3>Users List</h3>
+  <table class="table">
+    <tr>
+      <th>National ID</th>
+      <th>Procedure Type</th>
+      <th>Date</th>
+      <th></th>
+    </tr>
+    <% _.each(procedures, function(procedure) { %>
+      <tr data-id="<%= procedure.id %>" data-model="procedure">
+        <td><%= procedure.proStudentNationalID %></td>
+        <td><%= procedure.procedureType %></td>
+        <td><%= procedure.procedureDate %></td>
+        <td><a href="/procedure/edit/<%= procedure.id %>" class="btn btn-sm btn-warning">Edit</a></td>
+      </tr>
+    <% }) %>
+  </table>
+</div>
