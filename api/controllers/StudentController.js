@@ -20,7 +20,7 @@ module.exports = {
 				/* if error redirect back to sign-up page*/
 				return res.redirect('/student/new');
 			}
-			/* After successfully creating the user redirect to the new show action */
+			/* After successfully creating the studentf redirect to the new show action */
 			res.redirect('/student/show/' + student.id);
 		});
 	},
@@ -47,9 +47,9 @@ module.exports = {
 		});
 	},
 
-	/* render the edit view (e.g. /views/user/edit.ejs)*/
+	/* render the edit view (e.g. /views/student/edit.ejs)*/
 	edit: function (req, res, next) {
-		/* find the user from the id passed in via params*/
+		/* find the student from the id passed in via params*/
 		Student.findOne(req.param('id'), function foundStudent (err, student){
 			if (err) return next(err);
 			if (!student) return next('Student does not exist.');

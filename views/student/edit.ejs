@@ -1,0 +1,39 @@
+<div class="container">
+  <form action="/student/update/<%= student.id %>" method="POST" class="form-horizontal">
+    <div class="panel panel-default">
+      <div class="panel-heading">Student Information</div>
+      <div class="panel-body" style="padding: 2em">
+        <div class="form-group">
+          <label for="studentName" class="help">Student Name: </label>
+          <div class="input-group input-group-sm col-xs-3">
+            <input type="text" name="studentName" class="form-control" id="studentName" value="<%= student.studentName %>" required />
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="studentNationalID" class="help">National ID: </label>
+          <div class="input-group input-group-sm col-xs-2">
+            <input type="text" name="studentNationalID" class="form-control" id="studentNationalID" value="<%= student.studentNationalID %>" required />
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="studyCountry" class="help">Study Country: </label>
+          <div class="input-group input-group-sm col-xs-2">
+            <input type="text" name="studyCountry" class="form-control" id="studyCountry" value="<%= student.studyCountry %>" required />
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="studyCountryGroup" class="help">Study Country Group: </label>
+          <div class="input-group input-group-sm col-xs-2">
+            <input type="text" name="studyCountryGroup" class="form-control" id="studyCountryGroup" value="<%= student.studyCountryGroup %>" required />
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="input-group input-group-sm">
+            <input type="submit" class="btn btn-success" value="Edit Account"></input>
+            <input type="hidden" name="_csrf" value="<%= _csrf %>"></input>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
