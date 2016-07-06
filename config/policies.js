@@ -23,7 +23,8 @@ module.exports.policies = {
     show: 'admin',
     index: 'admin',
     edit: 'admin',
-    update: 'admin'
+    update: 'admin',
+    destroy: 'admin'
   },
   procedure: {
     'list-new-procedures-by-group': 'supervisor',
