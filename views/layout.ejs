@@ -6,7 +6,9 @@
     <!-- Viewport mobile tag for sensible mobile support -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-
+    <script type="text/javascript">
+      window.SAILS_LOCALS = { _csrf: "<%= _csrf %>" };
+    </script>
     <!--
         Stylesheets and Preprocessors
         ==============================
@@ -106,7 +108,7 @@
     -->
 
     <!--TEMPLATES-->
-    
+
     <!--TEMPLATES END-->
 
 
@@ -135,6 +137,7 @@
 
     <!--SCRIPTS-->
     <script src="/js/dependencies/sails.io.js"></script>
+    <script src="/js/dependencies/angular.1.3.js"></script>
     <!--SCRIPTS END-->
   </body>
 </html>
