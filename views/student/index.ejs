@@ -1,31 +1,36 @@
 <div class="container">
-  <h3>Users List</h3>
-  <table class="table">
-    <tr>
-      <th>National ID</th>
-      <th>Name</th>
-      <th>Study Country</th>
-      <th>Study Country Group</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-    <% _.each(students, function(student) { %>
-      <tr data-id="<%= student.id %>" data-model="student">
-        <td><%= student.studentNationalID %></td>
-        <td><%= student.studentName %></td>
-        <td><%= student.studyCountry %></td>
-        <td><%= student.studyCountryGroup %></td>
-        <td><a href="/student/show/<%= student.id %>" class="btn btn-sm btn-primary">Show</a></td>
-        <td><a href="/student/edit/<%= student.id %>" class="btn btn-sm btn-warning">Edit</a></td>
-        <td>
-          <form action="/student/destroy/<%= student.id %>" method="POST">
-            <input type="hidden" name="_method" value="delete"></input>
-            <input type="submit" class="btn btn-sm btn-danger" value="Delete"></input>
-            <input type="hidden" name="_csrf" value="<%= _csrf %>"></input>
-          </form>
-        </td>
-      </tr>
-    <% }) %>
-  </table>
+  <div class="panel panel-default">
+    <div class="panel-heading">Students List</div>
+    <div class="panel-body" style="padding: 2em">
+
+      <table class="table">
+        <tr>
+          <th>National ID</th>
+          <th>Name</th>
+          <th>Study Country</th>
+          <th>Study Country Group</th>
+          <th></th>
+          <th></th>
+          <th></th>
+        </tr>
+        <% _.each(students, function(student) { %>
+          <tr data-id="<%= student.id %>" data-model="student">
+            <td><%= student.studentNationalID %></td>
+            <td><%= student.studentName %></td>
+            <td><%= student.studyCountry %></td>
+            <td><%= student.studyCountryGroup %></td>
+            <td><a href="/student/show/<%= student.id %>" class="btn btn-sm btn-primary">Show</a></td>
+            <td><a href="/student/edit/<%= student.id %>" class="btn btn-sm btn-warning">Edit</a></td>
+            <td>
+              <form action="/student/destroy/<%= student.id %>" method="POST">
+                <input type="hidden" name="_method" value="delete"></input>
+                <input type="submit" class="btn btn-sm btn-danger" value="Delete"></input>
+                <input type="hidden" name="_csrf" value="<%= _csrf %>"></input>
+              </form>
+            </td>
+          </tr>
+        <% }) %>
+      </table>
+    </div>
+  </div>
 </div>

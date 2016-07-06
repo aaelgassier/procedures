@@ -45,7 +45,6 @@ module.exports.routes = {
   'GET /student/create': {view: 'student/create'},
   'POST /student/create': 'StudentController.create',
 
-  'GET /procedure/scanner':{view: 'scanner'}
 
   /***************************************************************************
   *                                                                          *

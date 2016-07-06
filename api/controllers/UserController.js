@@ -11,7 +11,6 @@ module.exports = {
 		User.create(req.params.all(), function userCreated (err, user) {
 			/* if there is an error */
 			if (err) {
-				console.log(err);
 				req.session.flash = {
 					err: err
 				}

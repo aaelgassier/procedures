@@ -198,16 +198,19 @@ module.exports = {
 			});
 		});
 	},
-	upload: function (req, res) {
-    req.file('proFilePath').upload({dirname: '../../assets/'}, function (err, files) {
+	upload: function  (req, res) {
+		console.log(req.param('avatar'));
+    req.file('proFilePath').upload({dirname: '../../assets/uploads/'},function (err, files) {
       if (err)
         return res.serverError(err);
+			if (files.length === 0){
+		      return res.badRequest('No file was uploaded');
+		    }
 
       return res.json({
         message: files.length + ' file(s) uploaded successfully!',
         files: files
       });
     });
-	}
-
+  }
 };

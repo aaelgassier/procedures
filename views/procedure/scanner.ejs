@@ -1,7 +1,7 @@
 <div class="container">
   <h1> Procedure decision </h1>
   <hr />
-  <form action="/procedure/upload" method="POST" class="form-horizontal">
+  <form action="/procedure/upload" enctype="multipart/form-data" method="POST" class="form-horizontal">
     <h2> Hey, you're taking a decision about a procedure ... </h2>
     <div class="panel panel-info">
       <div class="panel-heading">Procedure Details</div>
@@ -29,9 +29,9 @@
         </div>
 
         <div class="form-group">
-          <label for="proFilePath" class="col-xs-2">File Path: </label>
+          <label for="avatar" class="col-xs-2">File Path: </label>
           <div class="col-xs-5">
-            <input type="file" name="proFilePath" class="form-control" id="proFilePath" placeholder="Enter File Path" />
+            <input type="file" name="proFilePath" multiple="multiple" required>
           </div>
         </div>
 
