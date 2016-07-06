@@ -6,8 +6,9 @@
  */
 
 module.exports = {
-
-	signup: function(req, res) {
+	/* This action is to create a new user (employee) */
+	signup: function(req, res, next) {
+		/* Store all parameter filled up */
 		User.create(req.params.all(), function userCreated (err, user) {
 			/* if there is an error */
 			if (err) {
@@ -17,13 +18,13 @@ module.exports = {
 				/* if error redirect back to sign-up page*/
 				return res.redirect('../404');
 			}
-
-			/* Log user in */
-			// req.session.authenticated = true;
-			// req.session.user = user;
-
+			if (!user) {
+				return res.redirect('/')
+			}
 			/* After successfully creating the user redirect to the new show action */
-			res.redirect('/user/show/' + user.id);
+			if (user) {
+				res.redirect('/user/show/' + user.id);
+			}
 		});
 	},
 

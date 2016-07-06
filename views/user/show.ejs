@@ -1,40 +1,42 @@
 <div class="container">
-  <div class="panel panel-default">
-    <div class="panel-heading">Personal Information</div>
-    <div class="panel-body" style="padding: 2em">
-      <div class="form-group">
-        <label for="fullName" class="help">Full Name: </label>
-        <div class="input-group input-group-sm col-xs-4">
-          <input type="text" name="fullName" class="form-control" id="fullName" value="<%= user.fullName %>" readonly />
+  <div class="row text-center pad-top ">
+    <div class="col-md-12">
+      <h3><strong>Showing Exist User Data</strong></h3>
+    </div>
+  </div>
+  <div class="row  pad-top">
+    <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-1">
+      <hr />
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <strong>   User Information </strong>
         </div>
-      </div>
-      <div class="form-group">
-        <label for="email" class="help">Email Address: </label>
-        <div class="input-group input-group-sm col-xs-4">
-          <input type="email" name="email" class="form-control" id="email" value="<%= user.email %>" readonly />
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="nationalID" class="help">NationalID: </label>
-        <div class="input-group input-group-sm col-xs-2">
-          <input type="text" name="nationalID" class="form-control" id="nationalID" value="<%= user.nationalID %>" readonly />
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="position" class="help">Position: </label>
-        <div class="input-group input-group-sm col-xs-2">
-          <input type="text" name="position" class="form-control" id="position" value="<%= user.position %>" readonly />
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="department" class="help">Department: </label>
-        <div class="input-group input-group-sm col-xs-2">
-          <input type="text" name="department" class="form-control" id="department" value="<%= user.department %>" readonly />
-        </div>
-      </div>
-      <div class="form-group">
-        <div class="input-group input-group-sm">
-          <a class="btn btn-warning" href="/user/edit/<%= user.id %>"> Edit </a>
+        <div class="panel-body">
+          <form ng-app="" action="/user/signup" method="POST" name="signup" role="form">
+            <div class="form-group input-group">
+              <input type="text" name="fullName" class="form-control" id="fullName" value="<%= user.fullName %>" readonly />
+              <span class="input-group-addon"></span>
+            </div>
+            <div class="form-group input-group">
+              <input type="email" name="email" class="form-control" id="email" value="<%= user.email %>" readonly />
+              <span class="input-group-addon"></span>
+            </div>
+            <div class="form-group input-group">
+              <input type="text" name="position" class="form-control" id="position" value="Position: <%= user.position %>" readonly />
+              <span class="input-group-addon"></span>
+            </div>
+            <div class="form-group input-group">
+              <input type="text" name="department" class="form-control" id="department" value="Department: <%= user.department %>" readonly />
+              <span class="input-group-addon"></span>
+            </div>
+            <div class="form-group input-group">
+              <input type="text" name="nationalID" class="form-control" id="nationalID" value="<%= user.nationalID %>" readonly />
+              <span class="input-group-addon"></span>
+            </div>
+            <div class="input-group">
+              <a class="btn btn-warning" href="/user/edit/<%= user.id %>"> Edit </a>
+            </div>
+          </form>
         </div>
       </div>
     </div>
