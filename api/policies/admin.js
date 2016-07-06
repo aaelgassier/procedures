@@ -10,7 +10,7 @@
 module.exports = function(req, res, ok) {
 
   /* User is allowed, processed to controller */
-  if(req.session.user && req.session.user.position == 0) {
+  if(req.session.user && req.session.user.position === 100) {
     return ok();
   }
 

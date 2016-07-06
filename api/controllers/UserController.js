@@ -14,9 +14,8 @@ module.exports = {
 				req.session.flash = {
 					err: err
 				}
-
 				/* if error redirect back to sign-up page*/
-				return res.redirect('/user/signup');
+				return res.redirect('../404');
 			}
 
 			/* Log user in */
