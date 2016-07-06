@@ -12,7 +12,7 @@ module.exports = {
   attributes: {
 
     nationalID: {
-      type:'integer',
+      type:'string',
       required: true,
       unique: true
     },

@@ -18,7 +18,13 @@
 
 
 module.exports.policies = {
-
+  user: {
+    signup: 'admin',
+    show: 'admin',
+    index: 'admin',
+    edit: 'admin',
+    update: 'admin'
+  },
   procedure: {
     'list-new-procedures-by-group': 'supervisor',
   }

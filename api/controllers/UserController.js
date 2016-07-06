@@ -9,7 +9,6 @@ module.exports = {
 
 	signup: function(req, res) {
 		User.create(req.params.all(), function userCreated (err, user) {
-			console.log(user);
 			/* if there is an error */
 			if (err) {
 				console.log(err);
@@ -22,8 +21,8 @@ module.exports = {
 			}
 
 			/* Log user in */
-			req.session.authenticated = true;
-			req.session.user = user;
+			// req.session.authenticated = true;
+			// req.session.user = user;
 
 			/* After successfully creating the user redirect to the new show action */
 			res.redirect('/user/show/' + user.id);
