@@ -1,0 +1,25 @@
+<div class="container">
+  <h3>Users List</h3>
+  <table class="table">
+    <tr>
+      <th>National ID</th>
+      <th>Procedure Type</th>
+      <th>Date</th>
+      <th></th>
+    </tr>
+    <% _.each(pendingProcedures, function(procedure) { %>
+      <tr data-id="<%= procedure.id %>" data-model="procedure">
+        <td><%= procedure.proStudentNationalID %></td>
+        <td><%= procedure.procedureType %></td>
+        <td><%= procedure.createdAt %></td>
+        <td>
+          <form action="/procedure/pendingUpdate/<%= procedure.id %>" method="POST" class="form-horizontal">
+            <input type="hidden" name="_method" value="Delivered"></input>
+            <input type="submit" class="btn btn-success" value="Delivered"></input>
+            <input type="hidden" name="_csrf" value="<%= _csrf %>"></input>
+          </form>
+        </td>
+      </tr>
+    <% }) %>
+  </table>
+</div>

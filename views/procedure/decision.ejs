@@ -1,7 +1,7 @@
 <div class="container">
   <h1> Procedure decision </h1>
   <hr />
-  <form action="/procedure/decision/<%= procedure.id %>" method="POST" class="form-horizontal">
+  <form action="/procedure/decisionUpdate/<%= procedure.id %>" method="POST" class="form-horizontal">
     <h2> Hey, you're taking a decision about a procedure ... </h2>
     <div class="panel panel-info">
       <div class="panel-heading">Procedure Details</div>
@@ -33,7 +33,7 @@
           <div class="col-xs-3">
             <select name="procedureLevel" class="form-control" id="procedureLevel">
               <option value="-1"> -- SELECT -- </option>
-              <option value="100"> Refuse </option>
+              <option value="0"> Refuse </option>
               <option value="<%= procedure.procedureLevel + 1%>"> Accepted </option>
             </select>
           </div>

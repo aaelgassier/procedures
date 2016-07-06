@@ -45,6 +45,9 @@ module.exports.routes = {
   'GET /student/create': {view: 'student/create'},
   'POST /student/create': 'StudentController.create',
 
+  // 'GET /procedure/pending': {view: 'procedure/pending'},
+  // 'PUT /procedure/pending': 'ProcedureController.pending',
+
   /***************************************************************************
   *                                                                          *
   * Custom routes here...                                                    *

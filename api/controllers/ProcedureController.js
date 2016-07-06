@@ -82,7 +82,7 @@ module.exports = {
 	'list-all-new-procedures': function (req, res, next) {
 		if (req.session.authenticated) {
 			/* The new procedure for each user equal to (procedure level = position). Meaning, if the procedure level = 1 this procedure is a new for departent */
-			Procedure.find({procedureLevel: req.session.user.position}, function foundProcedures (err, procedures) {
+			Procedure.find({procedureLevel: req.session.user.position, procedurePending: 1}, function foundProcedures (err, procedures) {
 				if (err) return next(err);
 				/* pass the array down */
 				res.view({
@@ -101,22 +101,61 @@ module.exports = {
 			if (err) return next(err);
 			/* in case the procedure does not exit display this message */
 			if (!procedure) return next('Procedure does not exist.');
-
-			if (procedure) {
-				Procedure.update(req.param('id'), req.params.all(), function procedureUpdated(err) {
-					/* in case getting error during uploading the file, redirecting to the same again*/
-					if (err) {
-						return res.redirect('/procedure/decision/' + req.param('id'));
-					}
-					else {
-						return res.redirect('/procedure/list-new-procedures-by-group');
-					}
-				});
-			}
 			/* pass the array down */
 			res.view({
 				procedure: procedure
 			});
+		});
+	},
+
+	decisionUpdate: function (req, res, next) {
+		if (req.param('procedureLevel') != req.session.user.position)
+		{
+			var procedureObj = {
+					procedureLevel: req.param('procedureLevel'),
+					procedurePending: 0
+				}
+			} else {
+				procedureObj = {
+				procedureLevel: 0,
+				procedurePending: 0,
+				procedureNote: req.param('procedureNote')
+				}
+			}
+		Procedure.update(req.param('id'), procedureObj, function procedureUpdated(err) {
+			/* in case getting error during uploading the file, redirecting to the same again*/
+			if (err) {
+				return res.redirect('/procedure/decision/' + req.param('id'));
+			}
+			else {
+				return res.redirect('/procedure/list-new-procedures-by-group');
+			}
+		});
+	},
+	pending: function (req, res, next) {
+
+		/* The new procedure for each user equal to (procedure level = position). Meaning, if the procedure level = 1 this procedure is a new for departent */
+		Procedure.find({procedureLevel: req.session.user.position, procedurePending: 0}, function foundPendingProcedures (err, pendingProcedures) {
+			if (err) return next(err);
+
+			if (!pendingProcedures) return next('Procedure does not exist.');
+
+			/* pass the array down */
+			res.view({
+				pendingProcedures: pendingProcedures
+			});
+		});
+	},
+
+	pendingUpdate: function (req, res, next) {
+		Procedure.update(req.param('id'), {procedurePending: 1}, function procedureUpdated(err) {
+			/* in case getting error during uploading the file, redirecting to the same again*/
+			if (err) {
+				return res.redirect('/procedure/edit/' + req.param('id'));
+			}
+			/* in case the operation has been successfully done, redirecting to show procedure page */
+			// res.redirect('/procedure/show/' + req.param('id'));
+			return res.redirect('/procedure/pending');
 		});
 	},
 
