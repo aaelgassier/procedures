@@ -80,23 +80,39 @@ module.exports = {
 
 	/* This action displays all new procedures  */
 	'list-all-new-procedures': function (req, res, next) {
-		/* The new procedure for each user equal to (procedure level = position). Meaning, if the procedure level = 1 this procedure is a new for departent */
-		Procedure.find({procedureLevel: req.session.user.position}, function foundProcedures (err, procedures) {
-			if (err) return next(err);
-			/* pass the array down */
-			res.view({
-				procedures: procedures
+		if (req.session.authenticated) {
+			/* The new procedure for each user equal to (procedure level = position). Meaning, if the procedure level = 1 this procedure is a new for departent */
+			Procedure.find({procedureLevel: req.session.user.position}, function foundProcedures (err, procedures) {
+				if (err) return next(err);
+				/* pass the array down */
+				res.view({
+					procedures: procedures
+				});
 			});
-		});
+		} else {
+				return res.redirect('/')
+		}
 	},
 
 	/* render the edit view  */
-	edit: function (req, res, next) {
+	decision: function (req, res, next) {
 		/* find the user from the id passed in via params*/
 		Procedure.findOne(req.param('id'), function foundProcedure (err, procedure){
 			if (err) return next(err);
 			/* in case the procedure does not exit display this message */
 			if (!procedure) return next('Procedure does not exist.');
+
+			if (procedure) {
+				Procedure.update(req.param('id'), req.params.all(), function procedureUpdated(err) {
+					/* in case getting error during uploading the file, redirecting to the same again*/
+					if (err) {
+						return res.redirect('/procedure/decision/' + req.param('id'));
+					}
+					else {
+						return res.redirect('/procedure/list-new-procedures-by-group');
+					}
+				});
+			}
 			/* pass the array down */
 			res.view({
 				procedure: procedure
@@ -105,17 +121,17 @@ module.exports = {
 	},
 
 	/* Process the info from edit view */
-	update: function (req, res, next) {
-		Procedure.update(req.param('id'), req.params.all(), function procedureUpdated(err) {
-			/* in case getting error during uploading the file, redirecting to the same again*/
-			if (err) {
-				return res.redirect('/procedure/edit/' + req.param('id'));
-			}
-			/* in case the operation has been successfully done, redirecting to show procedure page */
-			// res.redirect('/procedure/show/' + req.param('id'));
-			console.log("ok");
-		});
-	},
+	// update: function (req, res, next) {
+	// 	Procedure.update(req.param('id'), req.params.all(), function procedureUpdated(err) {
+	// 		/* in case getting error during uploading the file, redirecting to the same again*/
+	// 		if (err) {
+	// 			return res.redirect('/procedure/edit/' + req.param('id'));
+	// 		}
+	// 		/* in case the operation has been successfully done, redirecting to show procedure page */
+	// 		// res.redirect('/procedure/show/' + req.param('id'));
+	// 		console.log("ok");
+	// 	});
+	// },
 
 	/* This action is to list all procedures has been changed by Entry Data and passed to who scans documents */
 	/* in order to upload scanned documents by pressing Edit button to move to scanner action */
