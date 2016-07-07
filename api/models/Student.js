@@ -11,7 +11,7 @@ module.exports = {
 
   attributes: {
     studentNationalID: {
-      type:'integer',
+      type:'string',
       required: true,
       unique: true
     },

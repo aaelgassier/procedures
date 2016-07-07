@@ -9,7 +9,6 @@ module.exports = {
 	create: function (req, res, next) {
 		/* Create a student with params sent from the sign up for --> new.ejs */
 		Student.create(req.params.all(), function studentCreated (err, student) {
-			console.log(student);
 			/* if there is an error */
 			if (err) {
 				console.log(err);
@@ -18,7 +17,7 @@ module.exports = {
 				}
 
 				/* if error redirect back to sign-up page*/
-				return next('duplication');
+				return next('Duplication');
 			}
 			/* After successfully creating the studentf redirect to the new show action */
 			res.redirect('/student/show/' + student.id);

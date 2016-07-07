@@ -88,7 +88,7 @@
               </div>
             </div>
             <div class="input-group">
-              <input type="submit" class="btn btn-success" ng-disabled="signup.$invalid" value="Create New Account"></input>
+              <input type="submit" class="co btn btn-success" ng-disabled="signup.$invalid" value="Create New Account"></input>
               <input type="hidden" name="_csrf" value="<%= _csrf %>"></input>
             </div>
           </form>
@@ -96,4 +96,106 @@
       </div>
     </div>
   </div>
+</div>
+
+<div class="container">
+  <form ng-app="" action="/user/signup" method="POST" class="form-horizontal" name="signup">
+
+    <div class="panel panel-default">
+      <div class="panel-heading">User Information</div>
+      <div class="panel-body" style="padding: 2em">
+        <div class="form-group">
+          <label for="fullName" class="help">Full Name: </label>
+          <span style="color:red" ng-if="signup.fullName.$dirty">
+            <span ng-show="signup.fullName.$error.required">Full name is required.</span>
+            <span ng-show="signup.fullName.$error.minlength">More characters are needed.</span>
+          </span>
+          <div class="input-group input-group-sm col-xs-4">
+            <input type="text" name="fullName" class="form-control" ng-minlength="8" ng-model="fullName" id="fullName" placeholder="Enter full name" required />
+            <span class="input-group-addon">*</span></span>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="email" class="help">Email Address: </label>
+          <span style="color:red" ng-if="signup.email.$dirty">
+            <span ng-show="signup.email.$error.required">Email address is required.</span>
+            <span ng-show="signup.email.$error.email">Not a valid email address.</span>
+          </span>
+          <div class="input-group input-group-sm col-xs-4">
+            <input type="email" name="email" class="form-control" ng-model="email" id="email" placeholder="Enter Email Address" required />
+            <span class="input-group-addon">*</span>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="password" class="help">Password: </label>
+          <span style="color:red" ng-if="signup.password.$dirty">
+            <span ng-show="signup.password.$error.required">Password is required.</span>
+            <span ng-show="signup.password.$error.minlength">Password must be at least 6 characters.</span>
+          </span>
+          <div class="input-group input-group-sm col-xs-4">
+            <input type="password" name="password" class="form-control" ng-minlength="6" ng-model="password" id="passowrd" placeholder="Your Password" />
+            <span class="input-group-addon">*</span>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="nationalID" class="help">NationalID: </label>
+          <span style="color:red" ng-if="signup.nationalID.$dirty">
+            <span ng-show="signup.nationalID.$error.required">National ID is required.</span>
+            <span ng-show="signup.nationalID.$error.minlength">National ID must be 12 digits.</span>
+            <span ng-show="signup.nationalID.$error.maxlength">National ID must be 12 digits.</span>
+          </span>
+          <div class="input-group input-group-sm col-xs-2">
+            <input type="text" name="nationalID" class="form-control" ng-minlength="12" ng-maxlength="12" ng-model="nationalID" id="nationalID" placeholder="Your National ID" required />
+            <span class="input-group-addon" id="sizing-addon3">*</span>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="position" class="help">Position: </label>
+          <span style="color:red" ng-if="signup.position.$dirty">
+            <span ng-show="signup.position.$error.required">Position is required.</span>
+          </span>
+          <div class="input-group input-group-sm col-xs-2">
+            <select name="position" class="form-control" id="position" ng-model="position" required>
+              <option value=""> -- SELECT -- </option>
+              <option value="1"> Supervisor </option>
+              <option value="2"> Student Affairs </option>
+              <option value="3"> Monitoring </option>
+              <option value="4"> Director </option>
+              <option value="5"> Documentation </option>
+              <option value="6"> Data Entry </option>
+              <option value="7"> Scanning </option>
+            </select>
+            <span class="input-group-addon">*</span>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="department" class="help">Department: </label>
+          <span style="color:red" ng-if="signup.department.$dirty">
+            <span ng-show="signup.department.$error.required">Department is required.</span>
+          </span>
+          <div class="input-group input-group-sm col-xs-2">
+            <select name="department" class="form-control" id="department" ng-model="department" required>
+              <option value=""> -- SELECT -- </option>
+              <option value="AL"> Public </option>
+              <option value="UI"> United Kingdom </option>
+              <option value="AU"> Australia </option>
+              <option value="CU"> Canada-United States </option>
+              <option value="TM"> Turkey-Malta </option>
+              <option value="EA"> Eastren Asia </option>
+              <option value="EE"> Eastren Europe </option>
+              <option value="WE"> Westren Europe </option>
+            </select>
+            <span class="input-group-addon">*</span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="input-group input-group-sm">
+            <input type="submit" class="btn btn-success" ng-disabled="signup.$invalid" value="Create Account"></input>
+            <input type="hidden" name="_csrf" value="<%= _csrf %>"></input>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
 </div>
