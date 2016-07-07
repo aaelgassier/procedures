@@ -37,6 +37,10 @@ module.exports = {
       type: 'integer',
       defaultsTo: 0
     },
+    proUserID: {
+      type: 'integer',
+      required: true
+    },
     proFilePath: {
       type: 'string'
     },

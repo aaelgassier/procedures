@@ -1,12 +1,25 @@
 <div class="container">
-  <ul class="nav">
-
-    <% if (session.user.position == 1) { %>
-      <li><a href="/procedure/search-to-create-new-procedure">Create a new procedure</a></li>
-      <li><a href="/procedure/list-new-procedures-by-group">List new procedures</a></li>
-    <% } %>
-    <li><a href="/procedure/list-all-new-procedures">List all new procedures</a></li>
-    <li><a href="#">Contact</a></li>
-    <li><a href="#">Feedback</a></li>
-  </ul>
+  <div class="row text-center pad-top ">
+    <div class="col-md-12">
+      <h2><strong>Commands Menu</strong></h2>
+    </div>
+  </div>
+  <div class="row  pad-top">
+    <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-1">
+      <hr />
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <ul class="nav">
+            <% if (session.user.position === 2) { %>
+              <li><a href="/procedure/search-to-create-new-procedure">Create a new procedure</a></li>
+              <li><a href="/procedure/list-new-procedures-by-group">List new procedures</a></li>
+            <% } %>
+            <li><a href="/procedure/list-all-new-procedures">List all new procedures</a></li>
+            <li><a href="#">Contact</a></li>
+            <li><a href="#">Feedback</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

@@ -1,47 +1,50 @@
+ييي
 <div class="container">
-  <form action="/procedure/create" method="POST" class="form-horizontal">
-    <div class="panel panel-default">
-      <div class="panel-heading">Procedure Information</div>
-      <div class="panel-body" style="padding: 2em">
-        <div class="form-group">
-          <label for="proStudentNationalID" class="help">National ID: </label>
-          <div class="input-group input-group-sm col-xs-2">
-            <input type="text" name="proStudentNationalID" class="form-control" id="proStudentNationalID" value="<%= student.studentNationalID %>" readonly />
-          </div>
+  <div class="row text-center pad-top ">
+    <div class="col-md-12">
+      <h2><strong>Showing New Procedure</strong></h2>
+    </div>
+  </div>
+  <div class="row  pad-top">
+    <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-1">
+      <hr />
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <strong> Student Details </strong>
         </div>
-        <div class="form-group">
-          <label for="studyCountry" class="help">Study Country: </label>
-          <div class="input-group input-group-sm col-xs-2">
-            <input type="text" name="studyCountry" class="form-control" id="studyCountry" value="<%= student.studyCountry %>" readonly />
-          </div>
-        </div>
-        <div class="form-group">
-          <label for="proStudyCountryGroup" class="help">Country Group: </label>
-          <div class="input-group input-group-sm col-xs-2">
-            <input type="text" name="proStudyCountryGroup" class="form-control" id="proStudyCountryGroup" value="<%= student.studyCountryGroup %>" readonly />
-          </div>
-        </div>
-        <div class="form-group">
-          <label for="procedureType" class="help">Procedure Type: </label>
-          <div class="input-group input-group-sm col-xs-2">
-            <select name="procedureType" class="form-control" id="procedureType">
-              <option value="selected"> -- SELECT -- </option>
-              <option value="Marital Status"> Marital Status </option>
-              <option value="Suspending"> Suspending </option>
-              <option value="Enquiry Only"> Enquiry Only </option>
-              <option value="Period Extension"> Period Extension </option>
-              <option value="Degree Extension"> Degree Extension </option>
-              <option value="Escort Fees"> Escort Fees </option>
-            </select>
-            <span class="input-group-addon" id="sizing-addon3">*</span>
-          </div>
-        </div>
-        <div class="form-group">
-          <div class="input-group input-group-sm">
-            <input type="submit" class="btn btn-success" value="Add Procedure"></input>
-            <input type="hidden" name="_csrf" value="<%= _csrf %>"></input>
+        <div class="panel-body">
+          <form ng-app="" action="/procedure/create" method="POST" name="newProcedure" role="form">
+            <div class="form-group input-group">
+              <input type="text" name="studentName" class="form-control" id="studentName" value="<%= student.studentName %>" readonly />
+              <span class="input-group-addon"></span>
+            </div>
+            <div class="form-group input-group">
+              <input type="text" name="proStudentNationalID" class="form-control" id="proStudentNationalID" value="<%= student.studentNationalID %>" readonly />
+              <span class="input-group-addon"></span>
+            </div>
+            <div class="form-group input-group">
+              <input type="text" name="studyCountry" class="form-control" id="studyCountry" value="<%= student.studyCountry %>" readonly />
+              <span class="input-group-addon"></span>
+            </div>
+            <div class="form-group input-group">
+              <select name="procedureType" class="form-control" id="procedureType">
+                <option value="selected"> -- SELECT -- </option>
+                <option value="Marital Status"> Marital Status </option>
+                <option value="Suspending"> Suspending </option>
+                <option value="Enquiry Only"> Enquiry Only </option>
+                <option value="Period Extension"> Period Extension </option>
+                <option value="Degree Extension"> Degree Extension </option>
+                <option value="Escort Fees"> Escort Fees </option>
+              </select>
+              <span class="input-group-addon" id="sizing-addon3">*</span>
+            </div>
+            <div class="input-group">
+              <input type="submit" class="btn btn-success" value="Add Procedure"></input>
+              <input type="hidden" name="_csrf" value="<%= _csrf %>"></input>
+            </div>
+          </form>
         </div>
       </div>
     </div>
-  </form>
+  </div>
 </div>

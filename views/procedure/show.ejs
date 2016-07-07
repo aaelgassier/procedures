@@ -1,28 +1,32 @@
 <div class="container">
-  <div class="panel panel-default">
-    <div class="panel-heading">Personal Information</div>
-    <div class="panel-body" style="padding: 2em">
-      <div class="form-group">
-        <label for="proStudentNationalID" class="help">Student NID: </label>
-        <div class="input-group input-group-sm col-xs-2">
-          <input type="text" name="proStudentNationalID" class="form-control" id="proStudentNationalID" value="<%= procedure.proStudentNationalID %>" readonly />
+  <div class="row text-center pad-top ">
+    <div class="col-md-12">
+      <h2><strong>Showing Exist User Data</strong></h2>
+    </div>
+  </div>
+  <div class="row  pad-top">
+    <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-1">
+      <hr />
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <strong>   User Information </strong>
         </div>
-      </div>
-      <div class="form-group">
-        <label for="proStudyCountryGroup" class="help">Country Group: </label>
-        <div class="input-group input-group-sm col-xs-2">
-          <input type="text" name="proStudyCountryGroup" class="form-control" id="proStudyCountryGroup" value="<%= procedure.proStudyCountryGroup %>" readonly />
-        </div>
-      </div>
-      <div class="form-group">
-        <label for="procedureType" class="help">Procedure Type: </label>
-        <div class="input-group input-group-sm col-xs-2">
-          <input type="text" name="procedureType" class="form-control" id="procedureType" value="<%= procedure.procedureType %>" readonly />
-        </div>
-      </div>
-      <div class="form-group">
-        <div class="input-group input-group-sm">
-
+        <div class="panel-body">
+          <div class="form-group input-group">
+            <input type="text" name="proID" class="form-control" id="proID" value="<%= procedure.proStudyCountryGroup %> - <%= procedure.id %>" readonly />
+            <span class="input-group-addon"></span>
+          </div>
+          <div class="form-group input-group">
+            <input type="text" name="proStudentNationalID" class="form-control" id="proStudentNationalID" value="<%= procedure.proStudentNationalID %>" readonly />
+            <span class="input-group-addon"></span>
+          </div>
+          <div class="form-group input-group">
+            <input type="text" name="procedureType" class="form-control" id="procedureType" value="<%= procedure.procedureType %>" readonly />
+            <span class="input-group-addon"></span>
+          </div>
+          <div class="input-group">
+            <a class="btn btn-warning" href="/procedure/search-to-create-new-procedure"> Back </a>
+          </div>
         </div>
       </div>
     </div>

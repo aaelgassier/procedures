@@ -41,7 +41,13 @@ module.exports = {
 
 	/* This action is to add the procedure to database */
 	create: function (req, res, next) {
-		Procedure.create(req.params.all(), function procedureCreated (err, procedure) {
+		var procedureObj = {
+			proStudentNationalID: req.param('proStudentNationalID'),
+			procedureType: req.param('procedureType'),
+			proStudyCountryGroup: req.session.user.department,
+			proUserID: req.session.user.id
+		};
+		Procedure.create(procedureObj, function procedureCreated (err, procedure) {
 			/* if there is an error */
 			if (err) {
 				console.log(err);

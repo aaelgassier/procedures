@@ -1,22 +1,36 @@
 <div class="container">
-  <form action="/procedure/procedure-submit" method="POST" class="form-horizontal">
-    <div class="panel panel-default">
-      <div class="panel-heading">Search for a Student by NID</div>
-      <div class="panel-body" style="padding: 2em">
-        <div class="form-group">
-          <label for="studentSearchByNID" class="help">National ID: </label>
-          <div class="input-group input-group-sm col-xs-2">
-            <input type="text" name="studentSearchByNID" class="form-control" id="studentSearchByNID" id="studentSearchByNID" placeholder="Student National ID" required />
-            <span class="input-group-addon" id="sizing-addon3">*</span>
-          </div>
-        </div>
-        <div class="form-group">
-          <div class="input-group input-group-sm col-xs-2">
-            <input type="submit" class="btn btn-success" value="Search"></input>
-            <input type="hidden" name="_csrf" value="<%= _csrf %>"></input>
-          </div>
+  <div class="row text-center pad-top ">
+    <div class="col-md-12">
+      <h3><strong>Search for a Student by NID</strong></h3>
+    </div>
+  </div>
+  <div class="row  pad-top">
+    <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-1">
+      <hr />
+      <div class="panel panel-default">
+        <div class="panel-heading"><strong>Search by NID</strong></div>
+        <div class="panel-body">
+          <form ng-app="" action="/procedure/procedure-submit" method="POST" name="studentSearchForm">
+            <div>
+              <span style="color:red" ng-if="studentSearchForm.studentSearchByNID.$dirty">
+                <span ng-show="studentSearchForm.studentSearchByNID.$error.required">National ID is required.</span>
+                <span ng-show="studentSearchForm.studentSearchByNID.$error.minlength">National ID must be 12 digits.</span>
+                <span ng-show="studentSearchForm.studentSearchByNID.$error.maxlength">National ID must be 12 digits.</span>
+              </span>
+              <div class="form-group input-group">
+                <input type="text" name="studentSearchByNID" class="form-control" ng-minlength="12" ng-maxlength="12" ng-model="studentSearchByNID" id="studentSearchByNID" placeholder="Enter Student National ID" required />
+                <span class="input-group-addon">*</span>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="input-group input-group-sm col-xs-2">
+                <input type="submit" class="btn btn-success" value="Search"></input>
+                <input type="hidden" name="_csrf" value="<%= _csrf %>"></input>
+              </div>
+            </div>
+          </form>
         </div>
       </div>
     </div>
-  </form>
+  </div>
 </div>
