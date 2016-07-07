@@ -18,7 +18,7 @@ module.exports = {
 				}
 
 				/* if error redirect back to sign-up page*/
-				return res.redirect('/student/new');
+				return next('duplication');
 			}
 			/* After successfully creating the studentf redirect to the new show action */
 			res.redirect('/student/show/' + student.id);

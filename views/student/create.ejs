@@ -1,64 +1,80 @@
 <div class="container">
-  <form action="/student/create" method="POST" class="form-horizontal">
-
-    <div class="panel panel-default">
-      <div class="panel-heading">Student Information</div>
-      <div class="panel-body" style="padding: 2em">
-        <div class="form-group">
-          <label for="studentName" class="help">Student Name: </label>
-          <div class="input-group input-group-sm col-xs-4">
-            <input type="text" name="studentName" class="form-control" id="studentName" placeholder="Enter Student Name" required />
-            <span class="input-group-addon" id="sizing-addon3">*</span>
-          </div>
+  <div class="row text-center pad-top ">
+    <div class="col-md-12">
+      <h2><strong>Adding a New Student</strong></h2>
+    </div>
+  </div>
+  <div class="row  pad-top">
+    <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-1">
+        <hr />
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <strong>   User Information </strong>
         </div>
-        <div class="form-group">
-          <label for="studentNationalID" class="help">National ID: </label>
-          <div class="input-group input-group-sm col-xs-2">
-            <input type="text" name="studentNationalID" class="form-control" id="studentNationalID" placeholder="Enter Student National ID" required />
-            <span class="input-group-addon" id="sizing-addon3">*</span>
-          </div>
-        </div>
-        <div class="form-group">
-          <label for="studyCountry" class="help">Study Country: </label>
-          <div class="input-group input-group-sm col-xs-2">
-            <select name="studyCountry" class="form-control" id="studyCountry">
-              <option value="selected"> -- SELECT -- </option>
-              <option value="United States"> United States </option>
-              <option value="Canada"> Canada </option>
-              <option value="United Kingdom"> United Kingdom </option>
-              <option value="Malaysia"> Malasiya </option>
-              <option value="Turkey"> Turkey </option>
-              <option value="Malta"> Malta </option>
-              <option value="Australia"> Australia </option>
-              <option value="New Zealand"> New Zealand </option>
-              <option value="India"> India </option>
-            </select>
-            <span class="input-group-addon">*</span>
-          </div>
-        </div>
-        <div class="form-group">
-          <label for="studyCountryGroup" class="help">Study Country Group: </label>
-          <div class="input-group input-group-sm col-xs-2">
-            <select name="studyCountryGroup" class="form-control" id="studyCountryGroup">
-              <option value=""> -- SELECT -- </option>
-              <option value="UI"> United Kingdom </option>
-              <option value="AU"> Australia </option>
-              <option value="CU"> Canada-United States </option>
-              <option value="TM"> Turkey-Malta </option>
-              <option value="EA"> Eastren Asia </option>
-              <option value="EE"> Eastren Europe </option>
-              <option value="WE"> Westren Europe </option>
-            </select>
-            <span class="input-group-addon">*</span>
-          </div>
-        </div>
-        <div class="form-group">
-          <div class="input-group input-group-sm">
-            <input type="submit" class="btn btn-success" value="Create Account"></input>
-            <input type="hidden" name="_csrf" value="<%= _csrf %>"></input>
-          </div>
+        <div class="panel-body">
+          <form ng-app="" action="/student/create" method="POST" name="newStudentForm" role="form">
+            <div>
+              <span style="color:red" ng-if="newStudentForm.studentName.$dirty">
+                <span ng-show="newStudentForm.studentName.$error.required">Full name is required.</span>
+                <span ng-show="newStudentForm.studentName.$error.minlength">More characters are needed.</span>
+              </span>
+              <div class="form-group input-group">
+                <input type="text" name="studentName" class="form-control" ng-minlength="8" ng-model="studentName" id="studentName" placeholder="Enter Studnet Name" required />
+                <span class="input-group-addon">*</span>
+              </div>
+            </div>
+            <div>
+              <span style="color:red" ng-if="newStudentForm.studentNationalID.$dirty">
+                <span ng-show="newStudentForm.studentNationalID.$error.required">National ID is required.</span>
+                <span ng-show="newStudentForm.studentNationalID.$error.minlength">National ID must be 12 digits.</span>
+                <span ng-show="newStudentForm.studentNationalID.$error.maxlength">National ID must be 12 digits.</span>
+              </span>
+              <div class="form-group input-group">
+                <input type="text" name="studentNationalID" class="form-control" ng-minlength="12" ng-maxlength="12" ng-model="studentNationalID" id="studentNationalID" placeholder="Enter Student National ID" required />
+                <span class="input-group-addon">*</span>
+              </div>
+            </div>
+            <div>
+              <span style="color:red" ng-if="newStudentForm.studyCountry.$dirty">
+                <span ng-show="newStudentForm.studyCountry.$error.required">Study Country is required.</span>
+              </span>
+              <span style="color:red" ng-if="newStudentForm.studyCountryGroup.$dirty">
+                <span ng-show="newStudentForm.studyCountryGroup.$error.required">Country Group is required.</span>
+              </span>
+              <div class="form-group input-group">
+                <select name="studyCountry" class="form-control" id="studyCountry" ng-model="studyCountry" required>
+                  <option value="">-Country-</option>
+                  <option value="United States"> United States </option>
+                  <option value="Canada"> Canada </option>
+                  <option value="United Kingdom"> United Kingdom </option>
+                  <option value="Malaysia"> Malasiya </option>
+                  <option value="Turkey"> Turkey </option>
+                  <option value="Malta"> Malta </option>
+                  <option value="Australia"> Australia </option>
+                  <option value="New Zealand"> New Zealand </option>
+                  <option value="India"> India </option>
+                </select>
+                <span class="input-group-addon">*</span>
+                <select name="studyCountryGroup" class="form-control" id="studyCountryGroup" ng-model="studyCountryGroup" required>
+                  <option value="">-Group-</option>
+                  <option value="UI"> United Kingdom </option>
+                  <option value="AU"> Australia </option>
+                  <option value="CU"> Canada-United States </option>
+                  <option value="TM"> Turkey-Malta </option>
+                  <option value="EA"> Eastren Asia </option>
+                  <option value="EE"> Eastren Europe </option>
+                  <option value="WE"> Westren Europe </option>
+                </select>
+                <span class="input-group-addon">*</span>
+              </div>
+            </div>
+            <div class="input-group">
+              <input type="submit" class="btn btn-success" ng-disabled="newStudentForm.$invalid" value="Add New Student"></input>
+              <input type="hidden" name="_csrf" value="<%= _csrf %>"></input>
+            </div>
+          </form>
         </div>
       </div>
     </div>
-  </form>
+  </div>
 </div>

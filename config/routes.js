@@ -46,6 +46,11 @@ module.exports.routes = {
   'POST /student/create': 'StudentController.create',
 
 
+
+  // "GET /session/create": {response: 'forbidden'},
+
+
+
   /***************************************************************************
   *                                                                          *
   * Custom routes here...                                                    *

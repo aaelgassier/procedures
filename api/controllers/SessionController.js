@@ -42,15 +42,9 @@ module.exports = {
 				return;
 			}
 
-			/* Compare password from the form params to the encrypted password of the user found */
-			// require('bcrypt').compare('123', user.encryptedPassword, function(err, result) {
-      // 	if (err) { throw (err); }
-      //  	console.log(result);
-			// 	});
 			bcrypt.compare(req.param('password'), user.encryptedPassword, function(err, valid) {
 				if (err) return next(err);
 				if (!valid) {
-					console.log(req.param('password') + valid + user.encryptedPassword);
 					var usernamePasswordMismatchError = [{name: 'usernamePasswordMismatch', message: 'Invalid username and password combination.'}];
 					req.session.flash = {
 						err: usernamePasswordMismatchError
@@ -76,6 +70,7 @@ module.exports = {
 					res.redirect('/procedure/main');
 				} else {
 						res.redirect('/');
+						// return next("kkkk");
 				}
 			});
 		});
