@@ -52,7 +52,7 @@
             <% if (session.authenticated) { %>
               <li class="active"><a href"/user/show/<%= session.user.id %>"><%= session.user.fullName %> </a> </li>
             <% } %>
-            <% if (session.authenticated && session.user.position == 0) { %>
+            <% if (session.authenticated && session.user.position === 100) { %>
               <li> <a href="/user"> User Administration </a> </li>
               <li> <a href="#"> Placeholder2 </a></li>
             <% } %>

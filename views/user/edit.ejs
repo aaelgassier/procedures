@@ -50,6 +50,10 @@
               </select>
               <span class="input-group-addon">*</span>
             </div>
+            <div class="form-group input-group">
+              <label class="radio-inline"><input type="radio" name="status" value="1">Active</label>
+              <label class="radio-inline"><input type="radio" name="status" value="0">Deactive</label>
+            </div>
             <div class="input-group">
               <input type="submit" class="btn btn-success" value="Edit Account"></input>
               <input type="hidden" name="_csrf" value="<%= _csrf %>"></input>

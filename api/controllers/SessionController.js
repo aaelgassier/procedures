@@ -25,7 +25,7 @@ module.exports = {
 			req.session.flash = {
 				err: usernamePasswordRequiredError
 			}
-			res.redirect('/session/new');
+			res.redirect('/');
 			return;
 		}
 
@@ -35,7 +35,6 @@ module.exports = {
 
 			if (!user) {
 				var noAccountError = [{name: 'noAccount', message: 'The email ' + req.param('email') + ' not found'}]
-				console.log(noAccountError);
 				req.session.flash = {
 					err: noAccountError
 				}
@@ -43,7 +42,6 @@ module.exports = {
 				return;
 			}
 
-			console.log(user.email + " " + user.encryptedPassword);
 			/* Compare password from the form params to the encrypted password of the user found */
 			// require('bcrypt').compare('123', user.encryptedPassword, function(err, result) {
       // 	if (err) { throw (err); }
@@ -54,29 +52,31 @@ module.exports = {
 				if (!valid) {
 					console.log(req.param('password') + valid + user.encryptedPassword);
 					var usernamePasswordMismatchError = [{name: 'usernamePasswordMismatch', message: 'Invalid username and password combination.'}];
-					console.log(usernamePasswordMismatchError);
 					req.session.flash = {
 						err: usernamePasswordMismatchError
 					}
-					res.redirect('/session/new');
+					res.redirect('/');
 
 					return;
 				}
 
+				if (user.status === 1) {
 				/* Log in */
-				req.session.authenticated = true;
-				req.session.user = user;
+					req.session.authenticated = true;
+					req.session.user = user;
 
-				/* if the user is also an admin redirect to the user list */
-				/* this is used in conjunction with config/policies */
+					/* if the user is also an admin redirect to the user list */
+					/* this is used in conjunction with config/policies */
 
-				if (req.session.user.position == 1) {
-					res.redirect('/user');
-					return;
+					if (req.session.user.position === 100) {
+						res.redirect('/user');
+						return;
+					}
+					// res.redirect('/user/show/' + user.id);
+					res.redirect('/procedure/main');
+				} else {
+						res.redirect('/');
 				}
-
-				// res.redirect('/user/show/' + user.id);
-				res.redirect('/procedure/main');
 			});
 		});
 	},
