@@ -41,9 +41,6 @@ module.exports = {
 
 	/* List of all users */
 	index: function (req, res, next) {
-
-		// console.log(new Date());
-		// console.log(req.session.authenticated);
 		/* Get an array of all users in the User collection */
 		User.find(function foundUsers (err, users) {
 			if (err) return next(err);
@@ -72,13 +69,16 @@ module.exports = {
 		// req.params.all()
 		User.update(req.param('id'), req.params.all(), function userUpdated(err) {
 			if (err) {
+				/* if there is an error, it will be redirect to edit page again*/
 				return res.redirect('/user/edit/' + req.param('id'));
 			}
 			res.redirect('/user/show/' + req.param('id'));
 		});
 	},
 
+	/* Delete a user account */
 	destroy: function (req, res, next) {
+		/* Find a user account that would be deleted*/
 		User.findOne(req.param('id'), function foundUser (err, user){
 			if (err) return next(err);
 
