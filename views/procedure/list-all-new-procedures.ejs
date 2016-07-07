@@ -12,7 +12,11 @@
         <td><%= procedure.proStudentNationalID %></td>
         <td><%= procedure.procedureType %></td>
         <td><%= procedure.createdAt %></td>
-        <td><a href="/procedure/decision/<%= procedure.id %>" class="btn btn-sm btn-warning">Edit</a></td>
+        <% if (session.user.position === 7) { %>
+          <td><a href="/procedure/scanner/<%= procedure.id %>" class="btn btn-sm btn-warning">uploading</a></td>
+        <% } else { %>
+          <td><a href="/procedure/decision/<%= procedure.id %>" class="btn btn-sm btn-warning">Edit</a></td>
+        <% } %>
       </tr>
     <% }) %>
   </table>

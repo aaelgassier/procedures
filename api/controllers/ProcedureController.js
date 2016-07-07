@@ -180,16 +180,17 @@ module.exports = {
 
 	/* This action is to list all procedures has been changed by Entry Data and passed to who scans documents */
 	/* in order to upload scanned documents by pressing Edit button to move to scanner action */
-	outgoing: function (req, res, next) {
-		/* find all procedures have level 10 becuase scanner person has position 10 */
-		Procedure.find({procedureLevel: req.session.user.position}, function foundProcedures (err, procedures) {
-			if (err) return next(err);
-			/* pass the array down */
-			res.view({
-				procedures: procedures
-			});
-		});
-	},
+	/* -------------------------NEXT STEP ------------------------- */
+	// outgoing: function (req, res, next) {
+	// 	/* find all procedures have level 10 becuase scanner person has position 10 */
+	// 	Procedure.find({procedureLevel: req.session.user.position}, function foundProcedures (err, procedures) {
+	// 		if (err) return next(err);
+	// 		/* pass the array down */
+	// 		res.view({
+	// 			procedures: procedures
+	// 		});
+	// 	});
+	// },
 	/* render the details of procedure which is going to be attached by a document */
 	/* after uploading the file the update action will be taken */
 	scanner: function (req, res, next) {
@@ -205,18 +206,13 @@ module.exports = {
 		});
 	},
 	upload: function  (req, res) {
-		console.log(req.param('avatar'));
-    req.file('proFilePath').upload({dirname: '../../assets/uploads/'},function (err, files) {
-      if (err)
-        return res.serverError(err);
+	  req.file('proFilePath').upload({dirname: '../../assets/uploads/'},function (err, files) {
+	    if (err)
+	      return res.serverError(err);
 			if (files.length === 0){
 		      return res.badRequest('No file was uploaded');
 		    }
-
-      return res.json({
-        message: files.length + ' file(s) uploaded successfully!',
-        files: files
-      });
+    return res.redirect('/procedure/list-all-new-procedures');
     });
   }
 };

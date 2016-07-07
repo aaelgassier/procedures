@@ -10,12 +10,15 @@
       <div class="panel panel-default">
         <div class="panel-body">
           <ul class="nav">
-            <% if (session.user.position === 2) { %>
+            <% if (session.user.position === 1) { %>
               <li><a href="/procedure/search-to-create-new-procedure">Create a new procedure</a></li>
               <li><a href="/procedure/list-new-procedures-by-group">List new procedures</a></li>
             <% } %>
+            <li><a href="/procedure/pending">Pending documents</a></li>
             <li><a href="/procedure/list-all-new-procedures">List all new procedures</a></li>
-            <li><a href="#">Contact</a></li>
+            <% if (session.user.position === 7) { %>
+              <li><a href="/procedure/scanner">Scanning</a></li>
+            <% } %>
             <li><a href="#">Feedback</a></li>
           </ul>
         </div>

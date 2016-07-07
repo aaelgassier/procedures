@@ -19,7 +19,7 @@
 
 module.exports.policies = {
   user: {
-    signup: 'admin',
+    signup: true,
     show: 'admin',
     index: 'admin',
     edit: 'admin',

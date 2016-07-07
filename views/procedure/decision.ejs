@@ -1,53 +1,50 @@
 <div class="container">
-  <h1> Procedure decision </h1>
-  <hr />
-  <form action="/procedure/decisionUpdate/<%= procedure.id %>" method="POST" class="form-horizontal">
-    <h2> Hey, you're taking a decision about a procedure ... </h2>
-    <div class="panel panel-info">
-      <div class="panel-heading">Procedure Details</div>
-      <div class="panel-body">
-
-        <div class="form-group">
-          <label for="proStudentNationalID" class="col-xs-2">National ID: </label>
-          <div class="col-xs-3">
-            <input type="text" name="proStudentNationalID" value="<%= procedure.proStudentNationalID %>" class="form-control" id="proStudentNationalID"  readonly="true"/>
-          </div>
+  <div class="row text-center pad-top ">
+    <div class="col-md-12">
+      <h2><strong>Taking a Decision</strong></h2>
+    </div>
+  </div>
+  <div class="row  pad-top">
+    <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-1">
+      <hr />
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <strong> Procedure Information </strong>
         </div>
-
-        <div class="form-group">
-          <label for="procedureType" class="col-xs-2">Procedure Type: </label>
-          <div class="col-xs-5">
-            <input type="text" name="procedureType" value="<%= procedure.procedureType %>" class="form-control" id="procedureType" readonly="true"/>
-          </div>
+        <div class="panel-body">
+          <form ng-app="" action="/procedure/decisionUpdate/<%= procedure.id %>" name="decisionForm" method="POST">
+            <div class="form-group input-group">
+              <input type="text" name="proStudentNationalID" value="<%= procedure.proStudentNationalID %>" class="form-control" id="proStudentNationalID"  readonly/>
+              <span class="input-group-addon"></span>
+            </div>
+            <div class="form-group input-group">
+              <input type="text" name="procedureType" value="<%= procedure.procedureType %>" class="form-control" id="procedureType" readonly/>
+              <span class="input-group-addon"></span>
+            </div>
+            <div class="form-group input-group">
+              <input type="text" name="procedureNote" class="form-control" id="procedureNote" placeholder="Enter Your Note" />
+              <span class="input-group-addon"></span>
+            </div>
+            <div>
+              <span style="color:red" ng-if="decisionForm.procedureLevel.$dirty">
+                <span ng-show="decisionForm.procedureLevel.$error.required">Decision is required.</span>
+              </span>
+              <div class="form-group input-group">
+                <select name="procedureLevel" class="form-control" ng-model="procedureLevel" id="procedureLevel" required>
+                  <option value=""> -- SELECT -- </option>
+                  <option value="0"> Refuse </option>
+                  <option value="<%= procedure.procedureLevel + 1%>"> Accepted </option>
+                </select>
+                <span class="input-group-addon">*</span>
+              </div>
+            </div>
+            <div class="form-group">
+              <input type="submit" class="co btn btn-success" ng-disabled="decisionForm.$invalid" value="Confirm"></input>
+              <input type="hidden" name="_csrf" value="<%= _csrf %>"></input>
+            </div>
+          </form>
         </div>
-
-        <div class="form-group">
-          <label for="procedureNote" class="col-xs-2">Procedure Note: </label>
-          <div class="col-xs-5">
-            <input type="text" name="procedureNote" class="form-control" id="procedureNote" />
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label for="procedureLevel" class="col-xs-2">Decision: </label>
-          <div class="col-xs-3">
-            <select name="procedureLevel" class="form-control" id="procedureLevel">
-              <option value="-1"> -- SELECT -- </option>
-              <option value="0"> Refuse </option>
-              <option value="<%= procedure.procedureLevel + 1%>"> Accepted </option>
-            </select>
-          </div>
-        </div>
-
-      </div>
-        <div class="form-group">
-          <label class="col-xs-2"></label>
-          <div class="col-xs-3">
-            <input type="submit" class="btn btn-success" value="Confirm"></input>
-            <input type="hidden" name="_csrf" value="<%= _csrf %>"></input>
-        </div>
-
       </div>
     </div>
-  </form>
+  </div>
 </div>
