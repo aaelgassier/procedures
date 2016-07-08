@@ -70,7 +70,7 @@ module.exports.connections = {
   ***************************************************************************/
   mySqlProcedures: {
     adapter: 'sails-postgresql',
-    host: 'ec2-54-221-226-148.compute-1.amazonaws.com',
+    host: 'ec2-54-221-226-72.compute-1.amazonaws.com',
     port: 5432,
     user: 'ihlgbhfvznvccy', // optional
     password: 'E7RVZnqTa0Ud_jhcRpXN6XT4nD', // optional
