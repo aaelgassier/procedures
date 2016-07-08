@@ -14,12 +14,12 @@
         <div class="panel-body">
           <form ng-app="" action="/user/signup" method="POST" name="signup" role="form">
             <div>
-              <span style="color:red" ng-if="signup.fullName.$dirty">
-                <span ng-show="signup.fullName.$error.required">Full name is required.</span>
-                <span ng-show="signup.fullName.$error.minlength">More characters are needed.</span>
+              <span style="color:red" ng-if="signup.fullname.$dirty">
+                <span ng-show="signup.fullname.$error.required">Full name is required.</span>
+                <span ng-show="signup.fullname.$error.minlength">More characters are needed.</span>
               </span>
               <div class="form-group input-group">
-                <input type="text" name="fullName" class="form-control" ng-minlength="8" ng-model="fullName" id="fullName" placeholder="Enter full name" required />
+                <input type="text" name="fullname" class="form-control" ng-minlength="8" ng-model="fullname" id="fullName" placeholder="Enter full name" required />
                 <span class="input-group-addon">*</span>
               </div>
             </div>

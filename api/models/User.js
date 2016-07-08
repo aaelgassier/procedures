@@ -16,7 +16,7 @@ module.exports = {
       required: true,
       unique: true
     },
-    fullName: {
+    fullname: {
       type: 'string',
       required: true
     },
@@ -34,7 +34,7 @@ module.exports = {
       required: true,
       unique: true
     },
-    encryptedPassword: {
+    encryptedpassword: {
       type: 'string',
       minLength: 6
     },
@@ -42,17 +42,17 @@ module.exports = {
       type: 'integer',
       defaultsTo: 1
     },
-    createdAt: {
+    createdat: {
       type: 'datetime'
     },
-    updatedAt: {
+    updatedat: {
       type: 'datetime'
     },
     toJSON: function() {
       var obj = this.toObject();
       delete obj.password;
       // delete obj.confirmation;
-      delete obj.encryptedPassword;
+      delete obj.encryptedpassword;
       delete obj._csrf;
       return obj;
     }
@@ -67,7 +67,7 @@ module.exports = {
     bcrypt.hash(values.password, bcrypt.genSaltSync(8), function passwordEncrypted(err, encryptedPassword) {
       console.log("password: " + values.password + "Encrypted password :  " + encryptedPassword);
       if (err) return next(err);
-      values.encryptedPassword = encryptedPassword;
+      values.encryptedpassword = encryptedPassword;
       // require('bcrypt').compare(values.password, encryptedPassword, function(err, result) {
       //  if (err) { throw (err); }
       //  console.log(result);
