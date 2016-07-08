@@ -11,7 +11,7 @@ module.exports = {
 
   attributes: {
 
-    nationalID: {
+    nationalid: {
       type:'string',
       required: true,
       unique: true

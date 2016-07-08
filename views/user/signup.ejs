@@ -44,13 +44,13 @@
               </div>
             </div>
             <div>
-              <span style="color:red" ng-if="signup.nationalID.$dirty">
-                <span ng-show="signup.nationalID.$error.required">National ID is required.</span>
-                <span ng-show="signup.nationalID.$error.minlength">National ID must be 12 digits.</span>
-                <span ng-show="signup.nationalID.$error.maxlength">National ID must be 12 digits.</span>
+              <span style="color:red" ng-if="signup.nationalid.$dirty">
+                <span ng-show="signup.nationalid.$error.required">National ID is required.</span>
+                <span ng-show="signup.nationalid.$error.minlength">National ID must be 12 digits.</span>
+                <span ng-show="signup.nationalid.$error.maxlength">National ID must be 12 digits.</span>
               </span>
               <div class="form-group input-group">
-                <input type="text" name="nationalID" class="form-control" ng-minlength="12" ng-maxlength="12" ng-model="nationalID" id="nationalID" placeholder="Your National ID" required />
+                <input type="text" name="nationalid" class="form-control" ng-minlength="12" ng-maxlength="12" ng-model="nationalid" id="nationalid" placeholder="Your National ID" required />
                 <span class="input-group-addon">*</span>
               </div>
             </div>
