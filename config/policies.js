@@ -20,6 +20,7 @@
 module.exports.policies = {
   user: {
     signup: true,
+    create: true,
     show: 'admin',
     index: 'admin',
     edit: 'admin',

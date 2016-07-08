@@ -1,48 +1,41 @@
 <div class="container">
-  <h1> Procedure decision </h1>
-  <hr />
-  <form action="/procedure/upload" enctype="multipart/form-data" method="POST" class="form-horizontal">
-    <h2> Hey, you're taking a decision about a procedure ... </h2>
-    <div class="panel panel-info">
-      <div class="panel-heading">Procedure Details</div>
-      <div class="panel-body">
-
-        <div class="form-group">
-          <label for="proStudentNationalID" class="col-xs-2">National ID: </label>
-          <div class="col-xs-3">
-            <input type="text" name="proStudentNationalID" value="<%= procedure.proStudentNationalID %>" class="form-control" id="proStudentNationalID"  readonly="true"/>
-          </div>
+  <div class="row text-center pad-top ">
+    <div class="col-md-12">
+      <h2><strong>Uploading File</strong></h2>
+    </div>
+  </div>
+  <div class="row  pad-top">
+    <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-1">
+      <hr />
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <strong> Procedure information </strong>
         </div>
-
-        <div class="form-group">
-          <label for="procedureType" class="col-xs-2">Procedure Type: </label>
-          <div class="col-xs-5">
-            <input type="text" name="procedureType" value="<%= procedure.procedureType %>" class="form-control" id="procedureType" readonly="true"/>
-          </div>
+        <div class="panel-body">
+          <form action="/procedure/upload" enctype="multipart/form-data" method="POST">
+            <div class="form-group input-group">
+              <input type="text" name="proStudentNationalID" value="<%= procedure.proStudentNationalID %>" class="form-control" id="proStudentNationalID"  readonly="true"/>
+              <span class="input-group-addon"></span>
+            </div>
+            <div class="form-group input-group">
+              <input type="text" name="procedureType" value="<%= procedure.procedureType %>" class="form-control" id="procedureType" readonly="true"/>
+              <span class="input-group-addon"></span>
+            </div>
+            <div class="form-group input-group">
+              <input type="text" name="proRefNo" class="form-control" id="proRefNo" placeholder="Enter Procedure Reference No" />
+              <span class="input-group-addon">*</span>
+            </div>
+            <div class="form-group input-group">
+              <input type="file" name="proFilePath" multiple="multiple" required>
+              <span class="input-group-addon">*</span>
+            </div>
+            <div class="form-group">
+              <input type="submit" class="btn btn-success" value="Confirm"></input>
+              <input type="hidden" name="_csrf" value="<%= _csrf %>"></input>
+            </div>
+          </form>
         </div>
-
-        <div class="form-group">
-          <label for="proRefNo" class="col-xs-2">Reference Number: </label>
-          <div class="col-xs-5">
-            <input type="text" name="proRefNo" class="form-control" id="proRefNo" placeholder="Enter Procedure Reference No" />
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label for="avatar" class="col-xs-2">File Path: </label>
-          <div class="col-xs-5">
-            <input type="file" name="proFilePath" multiple="multiple" required>
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label class="col-xs-2"></label>
-          <div class="col-xs-3">
-            <input type="submit" class="btn btn-success" value="Confirm"></input>
-            <input type="hidden" name="_csrf" value="<%= _csrf %>"></input>
-        </div>
-
       </div>
     </div>
-  </form>
+  </div>>
 </div>
