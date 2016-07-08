@@ -74,7 +74,8 @@ module.exports.connections = {
     port: 5432,
     user: 'apdxipdfbhtbcr', // optional
     password: 'CXhmFiWxjE_oz1GmYQ1Rc2j4f-', // optional
-    database: 'd6k2qlkh5mru8q' //optional
+    database: 'd6k2qlkh5mru8q', //optional
+    ssl: true
   }
 
 
