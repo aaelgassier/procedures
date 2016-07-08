@@ -16,7 +16,7 @@ module.exports = {
 					err: err
 				}
 				/* if error redirect back to sign-up page*/
-				return res.send('not ok');
+				return res.send(err);
 			}
 			if (!user) {
 				return res.redirect('/')
