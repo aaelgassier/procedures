@@ -42,7 +42,7 @@ module.exports = {
 				return;
 			}
 
-			bcrypt.compare(req.param('password'), user.encryptedPassword, function(err, valid) {
+			bcrypt.compare(req.param('password'), user.encryptedpassword, function(err, valid) {
 				if (err) return next(err);
 				if (!valid) {
 					var usernamePasswordMismatchError = [{name: 'usernamePasswordMismatch', message: 'Invalid username and password combination.'}];
