@@ -75,7 +75,6 @@ module.exports.connections = {
     user: 'ihlgbhfvznvccy', // optional
     password: 'E7RVZnqTa0Ud_jhcRpXN6XT4nD', // optional
     database: 'd1c27qg9qhd1vv', //optional
-    ssl: true
   }
 
 
