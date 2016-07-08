@@ -8,6 +8,8 @@
 module.exports = {
   connection: 'mySqlProcedures',
   schema: true,
+  autoCreatedAt: false,
+  autoUpdatedAt: false,
 
   attributes: {
 
