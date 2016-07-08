@@ -44,12 +44,6 @@ module.exports = {
       type: 'integer',
       defaultsTo: 1
     },
-    createdat: {
-      type: 'datetime'
-    },
-    updatedat: {
-      type: 'datetime'
-    },
     toJSON: function() {
       var obj = this.toObject();
       delete obj.password;

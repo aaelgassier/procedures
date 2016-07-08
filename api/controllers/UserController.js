@@ -16,14 +16,15 @@ module.exports = {
 					err: err
 				}
 				/* if error redirect back to sign-up page*/
-				return res.redirect('../404');
+				return res.send('not ok');
 			}
 			if (!user) {
 				return res.redirect('/')
 			}
 			/* After successfully creating the user redirect to the new show action */
 			if (user) {
-				res.redirect('/user/show/' + user.id);
+				// res.redirect('/user/show/' + user.id);
+				res.send('Ok');
 			}
 		});
 	},
